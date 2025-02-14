@@ -119,7 +119,7 @@ python app.py --model-path where_you_download_dir
 |----------------|-------------------|-------------------|
 | GLM-4-Voice    | 2.19              | 2.91              |
 | MinMo          | 2.48              | 2.90              |
-| **Step-Audio**  | **1.72**          | **2.71**          |
+| **Step-Audio**  | **1.53**          | **2.71**         |
 
 ### 5.3 AQTA Chat
 We release StepEval Audio 360 as a new benchmark, which consists of 100 multi-turn Chinese prompts sourced from real users and is designed to evaluate the quality of generated response across the following dimensions: linguistic competence, emotional intelligence, logical reasoning, creative generation, commonsense knowledge, complex instruction adherence, role-playing capabilities, gaming interactions, real-world task handling, memory retention, safety compliance, educational tutoring, and comprehensive understanding.
