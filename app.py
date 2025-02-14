@@ -8,7 +8,7 @@ from funasr import AutoModel
 from funasr.utils.postprocess_utils import rich_transcription_postprocess
 
 CACHE_DIR = "/tmp/gradio/"
-system_promtp = {"role": "system", "content": "适配用户的语言，用口语化的文字回答"}
+system_promtp = {"role": "system", "content": "适配用户的语言，用简短口语化的文字回答"}
 
 
 class CustomAsr:
@@ -43,12 +43,11 @@ def add_message(chatbot, history, mic, text, asr_model):
         history.append({"role": "user", "content": text})
     elif mic and Path(mic).exists():
         chatbot.append({"role": "user", "content": {"path": mic}})
-        # 此处直接使用用户语音的 asr 结果进行推理
+        # 使用用户语音的 asr 结果为了加速推理
         text = asr_model.run(mic)
         chatbot.append({"role": "user", "content": text})
         history.append({"role": "user", "content": text})
 
-    print(f"{chatbot=}")
     print(f"{history=}")
     return chatbot, history, None
 
@@ -70,7 +69,6 @@ def save_tmp_audio(audio, sr):
     return temp_audio.name
 
 
-# 将 history 给模型进行推理,结果保存 history 和 chatbot
 def predict(chatbot, history, audio_model):
     """Generate a response from the model."""
     try:
@@ -88,7 +86,7 @@ def predict(chatbot, history, audio_model):
 
 def _launch_demo(args, audio_model, asr_model):
     with gr.Blocks(delete_cache=(86400, 86400)) as demo:
-        gr.Markdown("""<center><font size=8>Step1o Audio Chat</center>""")
+        gr.Markdown("""<center><font size=8>Step Audio Chat</center>""")
         chatbot = gr.Chatbot(
             elem_id="chatbot",
             avatar_images=["assets/user.png", "assets/assistant.png"],
@@ -131,7 +129,6 @@ def _launch_demo(args, audio_model, asr_model):
 
         def regenerate(chatbot, history):
             while chatbot and chatbot[-1]["role"] == "assistant":
-                print(f"discard {chatbot[-1]}")
                 chatbot.pop()
             while history and history[-1]["role"] == "assistant":
                 print(f"discard {history[-1]}")
@@ -168,9 +165,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     audio_model = StepAudio(
-        tokenizer_path=os.path.join(args.model_path, "step-audio-tokenizer"),
-        tts_path=os.path.join(args.model_path, "step-audio-tts-3b"),
-        chat_path=os.path.join(args.model_path, "step-audio-chat"),
+        tokenizer_path=os.path.join(args.model_path, "Step-Audio-Tokenizer"),
+        tts_path=os.path.join(args.model_path, "Step-Audio-TTS-3B"),
+        llm_path=os.path.join(args.model_path, "Step-Audio-Chat"),
     )
     asr_model = CustomAsr()
     _launch_demo(args, audio_model, asr_model)
