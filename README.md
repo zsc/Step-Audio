@@ -1,4 +1,26 @@
 # Step-Audio
+<p align="center">
+  <img src="assets/logo.png"  height=100>
+</p>
+<div align="center">
+  <a href="https://huggingface.co/spaces/stepfun-ai/Step-Audio"><img src="https://img.shields.io/static/v1?label=Step-Audio&message=Web&color=green"></a> &ensp;
+  <a href=""><img src="https://img.shields.io/static/v1?label=Tech Report&message=Arxiv&color=red"></a> &ensp;
+  <a href="https://x.com/StepFun_ai"><img src="https://img.shields.io/static/v1?label=X.com&message=Web&color=blue"></a> &ensp;
+</div>
+
+<div align="center">
+  <a href="https://huggingface.co/stepfun-ai/Step-Audio-Chat"><img src="https://img.shields.io/static/v1?label=Step-Audio-Chat&message=HuggingFace&color=yellow"></a> &ensp;
+  <a href="https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B"><img src="https://img.shields.io/static/v1?label=Step-Audio-TTS-3B&message=HuggingFace&color=yellow"></a> &ensp;
+</div>
+<div align="center">
+  <a href="https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer"><img src="https://img.shields.io/static/v1?label=Step-Audio-Tokenier&message=HuggingFace&color=yellow"></a> &ensp;
+  <a href="https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360"><img src="https://img.shields.io/static/v1?label=StepEval-Audio-360&message=HuggingFace&color=yellow"></a> &ensp;
+</div>
+
+## 🔥🔥🔥 News!!
+* Feb 17, 2025: 👋 We release the inference code and model weights of [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) and [Step-Audio-Tokenizer](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)
+* Feb 17, 2025: 👋 We release the multi-turn audio benchmark of [StepEval-Audio-360](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360).
+
 
 ## Table of Contents
 
