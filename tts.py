@@ -56,14 +56,13 @@ class StepAudioTTS:
         self.sys_prompt_dict = {
             "sys_prompt_for_rap": "请参考对话历史里的音色，用RAP方式将文本内容大声说唱出来。",
             "sys_prompt_for_vocal": "请参考对话历史里的音色，用哼唱的方式将文本内容大声唱出来。",
-            "sys_prompt_wo_spk": '作为一名卓越的声优演员，你的任务是根据文本中（）或()括号内标注的情感、语种或方言、音乐哼唱、语音调整等标签，以丰富细腻的情感和自然顺畅的语调来朗读文本。\n# 情感标签涵盖了多种情绪状态，包括但不限于：\n- "高兴1"\n- "高兴2"\n- "高兴3"\n- "生气1"\n- "生气2"\n- "生气3"\n- "悲伤1"\n- "惊讶"\n- "厌恶"\n- "恐惧"\n- "中立"\n- "低语1"\n- "撒娇1"\n- "疲惫"\n\n# 语种或方言标签包含多种语言或方言，包括但不限于：\n- "中文"\n- "英文"\n- "韩语"\n- "日语"\n- "四川话"\n- "粤语"\n- "广东话"\n\n# 音乐哼唱标签包含多种类型歌曲哼唱，包括但不限于：\n- "RAP"\n- "哼唱"\n\n# 语音调整标签，包括但不限于：\n- "慢速1"\n- "慢速2"\n- "慢速3"\n- "快速1"\n- "快速2"\n- "快速3"\n\n请在朗读时，根据这些情感标签的指示，调整你的情感、语气、语调和哼唱节奏，以确保文本的情感和意义得到准确而生动的传达，如果没有()或（）括号，则根据文本语义内容自由演绎。',
-            "sys_prompt_with_spk": '作为一名卓越的声优演员，你的任务是根据文本中（）或()括号内标注的情感、语种或方言、音乐哼唱、语音调整等标签，以丰富细腻的情感和自然顺畅的语调来朗读文本。\n# 情感标签涵盖了多种情绪状态，包括但不限于：\n- "高兴1"\n- "高兴2"\n- "高兴3"\n- "生气1"\n- "生气2"\n- "生气3"\n- "悲伤1"\n- "惊讶"\n- "厌恶"\n- "恐惧"\n- "中立"\n- "低语1"\n- "撒娇1"\n- "疲惫"\n\n# 语种或方言标签包含多种语言或方言，包括但不限于：\n- "中文"\n- "英文"\n- "韩语"\n- "日语"\n- "四川话"\n- "粤语"\n- "广东话"\n\n# 音乐哼唱标签包含多种类型歌曲哼唱，包括但不限于：\n- "RAP"\n- "哼唱"\n\n# 语音调整标签，包括但不限于：\n- "慢速1"\n- "慢速2"\n- "慢速3"\n- "快速1"\n- "快速2"\n- "快速3"\n\n请在朗读时，使用[{}]的声音，根据这些情感标签的指示，调整你的情感、语气、语调和哼唱节奏，以确保文本的情感和意义得到准确而生动的传达，如果没有()或（）括号，则根据文本语义内容自由演绎。',
+            "sys_prompt_wo_spk": '作为一名卓越的声优演员，你的任务是根据文本中（）或()括号内标注的情感、语种或方言、音乐哼唱、语音调整等标签，以丰富细腻的情感和自然顺畅的语调来朗读文本。\n# 情感标签涵盖了多种情绪状态，包括但不限于：\n- "高兴1"\n- "高兴2"\n- "生气1"\n- "生气2"\n- "悲伤1"\n- "撒娇1"\n\n# 语种或方言标签包含多种语言或方言，包括但不限于：\n- "中文"\n- "英文"\n- "韩语"\n- "日语"\n- "四川话"\n- "粤语"\n- "广东话"\n\n# 音乐哼唱标签包含多种类型歌曲哼唱，包括但不限于：\n- "RAP"\n- "哼唱"\n\n# 语音调整标签，包括但不限于：\n- "慢速1"\n- "慢速2"\n- "快速1"\n- "快速2"\n\n请在朗读时，根据这些情感标签的指示，调整你的情感、语气、语调和哼唱节奏，以确保文本的情感和意义得到准确而生动的传达，如果没有()或（）括号，则根据文本语义内容自由演绎。',
+            "sys_prompt_with_spk": '作为一名卓越的声优演员，你的任务是根据文本中（）或()括号内标注的情感、语种或方言、音乐哼唱、语音调整等标签，以丰富细腻的情感和自然顺畅的语调来朗读文本。\n# 情感标签涵盖了多种情绪状态，包括但不限于：\n- "高兴1"\n- "高兴2"\n- "生气1"\n- "生气2"\n- "悲伤1"\n- "撒娇1"\n\n# 语种或方言标签包含多种语言或方言，包括但不限于：\n- "中文"\n- "英文"\n- "韩语"\n- "日语"\n- "四川话"\n- "粤语"\n- "广东话"\n\n# 音乐哼唱标签包含多种类型歌曲哼唱，包括但不限于：\n- "RAP"\n- "哼唱"\n\n# 语音调整标签，包括但不限于：\n- "慢速1"\n- "慢速2"\n- "快速1"\n- "快速2"\n\n请在朗读时，使用[{}]的声音，根据这些情感标签的指示，调整你的情感、语气、语调和哼唱节奏，以确保文本的情感和意义得到准确而生动的传达，如果没有()或（）括号，则根据文本语义内容自由演绎。',
         }
         self.register_speakers()
 
     def __call__(self, text: str, prompt_speaker: str, clone_dict: dict | None = None):
         if clone_dict:
-            print(clone_dict)
             clone_prompt_code, clone_prompt_token, clone_prompt_token_len, clone_speech_feat, clone_speech_feat_len, clone_speech_embedding = (
                 self.preprocess_prompt_wav(clone_dict['wav_path'])
             )
@@ -91,7 +90,6 @@ class StepAudioTTS:
         if clone_dict:
             prompt_speaker = ''
 
-        #print(prompt_speaker_info)
         token_ids = self.tokenize(
             text,
             prompt_speaker_info["prompt_text"],
@@ -126,7 +124,6 @@ class StepAudioTTS:
 
         for speaker_id, prompt_text in speakers_info.items():
             prompt_wav_path = f"speakers/{speaker_id}_prompt.wav"
-            #prompt_wav, prompt_wav_sr = torchaudio.load(prompt_wav_path)
             prompt_code, prompt_token, prompt_token_len, speech_feat, speech_feat_len, speech_embedding = (
                 self.preprocess_prompt_wav(prompt_wav_path)
             )
@@ -207,10 +204,7 @@ class StepAudioTTS:
         prompt_wav_22k = torchaudio.transforms.Resample(
             orig_freq=prompt_wav_sr, new_freq=22050
         )(prompt_wav)
-        
-        # prompt_token, prompt_token_len = (
-        #     self.common_cosy_model.frontend._extract_speech_token(prompt_wav_16k)
-        # )
+
         speech_feat, speech_feat_len = (
             self.common_cosy_model.frontend._extract_speech_feat(prompt_wav_22k)
         )

@@ -92,7 +92,7 @@ The following table shows the requirements for running Step-Audio model (batch s
 |------------|--------------------------------|----------------|
 | Step-Audio-Tokenizer   |        41.6Hz          |       1.5GB        |
 | Step-Audio-Chat   |        41.6Hz          |       265GB        |
-| Step-Audio-TTS-3B   |        25Hz          |       8GB        |
+| Step-Audio-TTS-3B   |        41.6Hz          |       8GB        |
 
 * An NVIDIA GPU with CUDA support is required. 
   * The model is tested on a four A800 80G GPU.
@@ -133,6 +133,20 @@ Inference with e2e audio/text input and audio/text output.
 ```bash
 python offline_inference.py --model-path where_you_download_dir
 ```
+#### tts inference
+Inference tts with default speaker or clone with a new speaker
+```bash
+python tts_inference.py --model-path where_you_download_dir --output-path where_you_save_audio_dir --synthesis-type use_tts_or_clone
+```
+A speaker information dict is required for clone mode, formatted as follows:
+```bash
+{
+    "speaker": "speaker id",
+    "prompt_text": "content of prompt wav",
+    "wav_path": "prompt wav path"
+}
+```
+
 #### Launch Web Demo
 Start a local server for online inference.
 Assume you have 4 GPUs available and have already downloaded all the models.
