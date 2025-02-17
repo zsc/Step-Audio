@@ -25,7 +25,7 @@
 ## 🔥🔥🔥 News!!
 * Feb 17, 2025: 👋 We release the inference code and model weights of [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) and [Step-Audio-Tokenizer](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer)
 * Feb 17, 2025: 👋 We release the multi-turn audio benchmark of [StepEval-Audio-360](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360).
-
+* Feb 17, 2025: 👋 We release the technical report of [Step-Audio](./assets/Step-Audio.pdf).
 
 ## Table of Contents
 
@@ -42,11 +42,11 @@
 Step-Audio is the first production-ready open-source framework for intelligent speech interaction that harmonizes comprehension and generation, supporting multilingual conversations (e.g., Chinese, English, Japanese), emotional tones (e.g., joy/sadness), regional dialects (e.g., Cantonese/Sichuanese), adjustable speech rates, and prosodic styles (e.g., rap). Step-Audio demonstrates four key technical innovations:
 
 - **130B-Parameter Multimodal Model**: A single unified model integrating comprehension and generation capabilities, performing speech recognition, semantic understanding, dialogue, voice cloning, and speech synthesis. We have made the 130B Step-Audio-Chat variant open source.
-    
+
 - **Generative Data Engine**: Eliminates traditional TTS's reliance on manual data collection by generating high-quality audio through our 130B-parameter multimodal model. Leverages this data to train and publicly release a resource-efficient Step-Audio-TTS-3B model with enhanced instruction-following capabilities for controllable speech synthesis.
-    
+
 - **Granular Voice Control**: Enables precise regulation through instruction-based control design, supporting multiple emotions (anger, joy, sadness), dialects (Cantonese, Sichuanese, etc.), and vocal styles (rap, a cappella humming) to meet diverse speech generation needs.
-    
+
 - **Enhanced Intelligence**: Improves agent performance in complex tasks through ToolCall mechanism integration and role-playing enhancements.
 
 ## 2. Model Summary
@@ -60,7 +60,7 @@ We implement a token-level interleaving approach to effectively integrate semant
 ### 2.2 Language Model
 
 To enhance Step-Audio’s ability to effectively process speech information and
-achieve accurate speech-text alignment, we conducted audio continual pretrain-ing based on Step-1, a 130-billion parameter pretrained text-based large language model (LLM). 
+achieve accurate speech-text alignment, we conducted audio continual pretrain-ing based on Step-1, a 130-billion parameter pretrained text-based large language model (LLM).
 
 ### 2.3 Speech Decoder
 The speech decoder in Step-Audio serves a critical function in converting discrete speech tokens, which contain both semantic and acoustic information, into continuous time-domain waveforms that represent natural speech. The decoder architecture incorporates a flow matching model and a mel-to-wave vocoder. To optimize the intelligibility and naturalness of the synthesized speech, the speech decoder is trained using a dual-code interleaving approach, ensuring seamless integration of semantic and acoustic features throughout the generation process.
@@ -99,7 +99,7 @@ The following table shows the requirements for running Step-Audio model (batch s
 | Step-Audio-Chat   |        41.6Hz          |       265GB        |
 | Step-Audio-TTS-3B   |        41.6Hz          |       8GB        |
 
-* An NVIDIA GPU with CUDA support is required. 
+* An NVIDIA GPU with CUDA support is required.
   * The model is tested on a four A800 80G GPU.
   * **Recommended**: We recommend using 4xA800/H800 GPU with 80GB memory for better generation quality.
 * Tested operating system: Linux
@@ -467,7 +467,7 @@ We release [**StepEval-Audio-360**](https://huggingface.co/datasets/stepfun-ai/S
     </tbody>
 </table>
 
-*Note: Moshi are marked with "\*" and should be considered for reference only. 
+*Note: Moshi are marked with "\*" and should be considered for reference only.
 
 #### Radar Chart(Human Evaluation)
 <img src="./assets/stepeval_radar_chart.png" width="600" alt="QR code">
@@ -563,8 +563,8 @@ At the same time, we provide a trial Hugging Face demo.
 ### Clone audio
 | role   | prompt wav | clone wav |
 |:-------:|:-------:|:-------:|
-|赵本山| [google drive](https://drive.google.com/file/d/1AzAvVx5F7Frl1XPieEIdYhzbd3EcWess/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_zhaobenshan.mp3)|[google drive](https://drive.google.com/file/d/108fYHj2ghK_BQyWsZJ35ctyuAv0JzHIu/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_zhaobenshan.mp3)| 
-|李雪琴| [google drive](https://drive.google.com/file/d/15SkZ29hksELYi1NDOxYOPu-kRTLSyke_/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_lixueqin.wav)|[google drive](https://drive.google.com/file/d/11Le4qMqL2DmWpf7RFRpKUXERIR9TtKC0/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_lixueqin.mp3)| 
+|赵本山| [google drive](https://drive.google.com/file/d/1AzAvVx5F7Frl1XPieEIdYhzbd3EcWess/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_zhaobenshan.mp3)|[google drive](https://drive.google.com/file/d/108fYHj2ghK_BQyWsZJ35ctyuAv0JzHIu/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_zhaobenshan.mp3)|
+|李雪琴| [google drive](https://drive.google.com/file/d/15SkZ29hksELYi1NDOxYOPu-kRTLSyke_/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_lixueqin.wav)|[google drive](https://drive.google.com/file/d/11Le4qMqL2DmWpf7RFRpKUXERIR9TtKC0/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_lixueqin.mp3)|
 
 ### Speed control
 | prompt | response |
@@ -593,7 +593,7 @@ At the same time, we provide a trial Hugging Face demo.
 ## 8. Citation
 ```
 @misc{stepaudiotechnicalreport,
-      title={Step-Audio: Harmonized Understanding and Generation in Intelligent Speech Interaction}, 
+      title={Step-Audio: Harmonized Understanding and Generation in Intelligent Speech Interaction},
       author={Step-Audio Team},
       year={2025},
 }
