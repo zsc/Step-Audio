@@ -8,7 +8,6 @@ from funasr import AutoModel
 from funasr.utils.postprocess_utils import rich_transcription_postprocess
 
 CACHE_DIR = "/tmp/gradio/"
-system_promtp = {"role": "system", "content": "适配用户的语言，用简短口语化的文字回答"}
 
 
 class CustomAsr:
@@ -49,9 +48,9 @@ def add_message(chatbot, history, mic, text):
     return chatbot, history, None
 
 
-def reset_state():
+def reset_state(system_prompt):
     """Reset the chat history."""
-    return [], [system_promtp]
+    return [], [{"role": "system", "content": system_prompt}]
 
 
 def save_tmp_audio(audio, sr):
@@ -96,6 +95,14 @@ def predict(chatbot, history, audio_model, asr_model):
 def _launch_demo(args, audio_model, asr_model):
     with gr.Blocks(delete_cache=(86400, 86400)) as demo:
         gr.Markdown("""<center><font size=8>Step Audio Chat</center>""")
+        
+        with gr.Row():
+            system_prompt = gr.Textbox(
+                label="System Prompt",
+                value="适配用户的语言，用简短口语化的文字回答",
+                lines=2
+            )
+            
         chatbot = gr.Chatbot(
             elem_id="chatbot",
             avatar_images=["assets/user.png", "assets/assistant.png"],
@@ -103,7 +110,7 @@ def _launch_demo(args, audio_model, asr_model):
             type="messages",
         )
         # 保存 chat 历史，不需要每次再重新拼格式
-        history = gr.State([system_promtp])
+        history = gr.State([{"role": "system", "content": system_prompt.value}])
         mic = gr.Audio(type="filepath")
         text = gr.Textbox(placeholder="Enter message ...")
 
@@ -130,8 +137,10 @@ def _launch_demo(args, audio_model, asr_model):
             concurrency_limit=4,
             concurrency_id="gpu_queue",
         )
+        
         clean_btn.click(
-            reset_state,
+            fn=reset_state,
+            inputs=[system_prompt],
             outputs=[chatbot, history],
             show_progress=True,
         )
@@ -153,7 +162,7 @@ def _launch_demo(args, audio_model, asr_model):
         )
 
     demo.queue().launch(
-        share=False,
+        share=args.share,
         server_port=args.server_port,
         server_name=args.server_name,
     )
@@ -170,6 +179,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--server-name", type=str, default="0.0.0.0", help="Demo server name."
+    )
+    parser.add_argument(
+        "--share", action="store_true", help="Enable sharing of the demo."
     )
     args = parser.parse_args()
 
