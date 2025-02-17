@@ -61,9 +61,25 @@ class StepAudioTTS:
         }
         self.register_speakers()
 
-    def __call__(self, text: str, prompt_speaker: str):
+    def __call__(self, text: str, prompt_speaker: str, clone_dict: dict | None = None):
+        if clone_dict:
+            print(clone_dict)
+            clone_prompt_code, clone_prompt_token, clone_prompt_token_len, clone_speech_feat, clone_speech_feat_len, clone_speech_embedding = (
+                self.preprocess_prompt_wav(clone_dict['wav_path'])
+            )
+            prompt_speaker = clone_dict['speaker']
+            self.speakers_info[prompt_speaker] = {
+                "prompt_text": clone_dict['prompt_text'],
+                "prompt_code": clone_prompt_code,
+                "cosy_speech_feat": clone_speech_feat.to(torch.bfloat16),
+                "cosy_speech_feat_len": clone_speech_feat_len,
+                "cosy_speech_embedding": clone_speech_embedding.to(torch.bfloat16),
+                "cosy_prompt_token": clone_prompt_token,
+                "cosy_prompt_token_len": clone_prompt_token_len,
+            }
+
         instruction_name = self.detect_instruction_name(text)
-        if instruction_name in ("RAP", "VOCAL"):
+        if instruction_name in ("RAP", "哼唱"):
             prompt_speaker_info = self.speakers_info[
                 f"{prompt_speaker}{instruction_name}"
             ]
@@ -72,6 +88,10 @@ class StepAudioTTS:
             prompt_speaker_info = self.speakers_info[prompt_speaker]
             cosy_model = self.common_cosy_model
 
+        if clone_dict:
+            prompt_speaker = ''
+
+        #print(prompt_speaker_info)
         token_ids = self.tokenize(
             text,
             prompt_speaker_info["prompt_text"],
@@ -106,13 +126,11 @@ class StepAudioTTS:
 
         for speaker_id, prompt_text in speakers_info.items():
             prompt_wav_path = f"speakers/{speaker_id}_prompt.wav"
-            prompt_wav, prompt_wav_sr = torchaudio.load(prompt_wav_path)
-            _, _, speech_feat, speech_feat_len, speech_embedding = (
-                self.preprocess_prompt_wav(prompt_wav, prompt_wav_sr)
+            #prompt_wav, prompt_wav_sr = torchaudio.load(prompt_wav_path)
+            prompt_code, prompt_token, prompt_token_len, speech_feat, speech_feat_len, speech_embedding = (
+                self.preprocess_prompt_wav(prompt_wav_path)
             )
-            prompt_code, _, _ = self.encoder.wav2token(prompt_wav, prompt_wav_sr)
-            prompt_token = torch.tensor([prompt_code], dtype=torch.long) - 65536
-            prompt_token_len = torch.tensor([prompt_token.shape[1]], dtype=torch.long)
+
             self.speakers_info[speaker_id] = {
                 "prompt_text": prompt_text,
                 "prompt_code": prompt_code,
@@ -135,7 +153,7 @@ class StepAudioTTS:
     def tokenize(
         self, text: str, prompt_text: str, prompt_speaker: str, prompt_code: list
     ):
-        rap_or_vocal = self.detect_instruction_name(text) in ("RAP", "VOCAL")
+        rap_or_vocal = self.detect_instruction_name(text) in ("RAP", "哼唱")
 
         if rap_or_vocal:
             if "哼唱" in text:
@@ -153,11 +171,11 @@ class StepAudioTTS:
         history.extend([4] + sys_tokens + [3])
 
         _prefix_tokens = self.tokenizer.encode("\n")
-        part_tokens1 = self.tokenizer.encode("\n" + prompt_text)
-        question1_tokens = part_tokens1[len(_prefix_tokens) :]
+        prompt_token_encode = self.tokenizer.encode("\n" + prompt_text)
+        prompt_tokens = prompt_token_encode[len(_prefix_tokens) :]
 
-        part_tokens2 = self.tokenizer.encode("\n" + text)
-        question2_tokens = part_tokens2[len(_prefix_tokens) :]
+        target_token_encode = self.tokenizer.encode("\n" + text)
+        target_tokens = target_token_encode[len(_prefix_tokens) :]
 
         qrole_toks = self.tokenizer.encode("human\n")
         arole_toks = self.tokenizer.encode("assistant\n")
@@ -165,7 +183,7 @@ class StepAudioTTS:
         history.extend(
             [4]
             + qrole_toks
-            + question1_tokens
+            + prompt_tokens
             + [3]
             + [4]
             + arole_toks
@@ -173,30 +191,39 @@ class StepAudioTTS:
             + [3]
             + [4]
             + qrole_toks
-            + question2_tokens
+            + target_tokens
             + [3]
             + [4]
             + arole_toks
         )
         return history
 
-    def preprocess_prompt_wav(self, prompt_wav: torch.Tensor, prompt_wav_sr: int):
+    def preprocess_prompt_wav(self, prompt_wav_path : str):
+        prompt_wav, prompt_wav_sr = torchaudio.load(prompt_wav_path)
+
         prompt_wav_16k = torchaudio.transforms.Resample(
             orig_freq=prompt_wav_sr, new_freq=16000
         )(prompt_wav)
         prompt_wav_22k = torchaudio.transforms.Resample(
             orig_freq=prompt_wav_sr, new_freq=22050
         )(prompt_wav)
-        prompt_token, prompt_token_len = (
-            self.common_cosy_model.frontend._extract_speech_token(prompt_wav_16k)
-        )
+        
+        # prompt_token, prompt_token_len = (
+        #     self.common_cosy_model.frontend._extract_speech_token(prompt_wav_16k)
+        # )
         speech_feat, speech_feat_len = (
             self.common_cosy_model.frontend._extract_speech_feat(prompt_wav_22k)
         )
         speech_embedding = self.common_cosy_model.frontend._extract_spk_embedding(
             prompt_wav_16k
         )
+
+        prompt_code, _, _ = self.encoder.wav2token(prompt_wav, prompt_wav_sr)
+        prompt_token = torch.tensor([prompt_code], dtype=torch.long) - 65536
+        prompt_token_len = torch.tensor([prompt_token.shape[1]], dtype=torch.long)
+
         return (
+            prompt_code,
             prompt_token,
             prompt_token_len,
             speech_feat,
