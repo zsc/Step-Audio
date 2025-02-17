@@ -23,9 +23,9 @@
 </div>
 
 ## 🔥🔥🔥 News!!
-* 2025年2月12日: 👋 发布推理代码和模型权重，其中包含[Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) 和 [Step-Audio-Tokenizer](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)。
-* 2025年2月12日: 👋 发布多轮音频交互基准测试[StepEval-Audio-360](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)。
-
+* 2025年2月17日: 👋 发布推理代码和模型权重，其中包含[Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) 和 [Step-Audio-Tokenizer](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)。
+* 2025年2月17日: 👋 发布多轮音频交互基准测试[StepEval-Audio-360](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)。
+* 2025年2月17日：👋 发布了技术报告[Step-Audio-Report](./assets/Step-Audio.pdf)。
 
 ## Table of Contents
 
@@ -43,11 +43,11 @@
 Step-Audio 是业界首个集语音理解与生成控制一体化的产品级开源实时语音对话系统，支持多语言对话（如 中文，英文，日语），语音情感（如 开心，悲伤），方言（如 粤语，四川话），可控制语速及韵律风格，支持RAP和哼唱等。其核心技术突破体现在以下四大技术亮点：
 
 - **1300亿多模态模型**: 单模型能实现理解生成一体化完成语音识别、语义理解、对话、语音克隆、语音生成等功能，开源千亿参数多模态模型 Step-Audio-Chat。
- 
+
 - **高效数据生成链路**: 基于130B 突破传统 TTS 对人工采集数据的依赖，生成高质量的合成音频数据，并同步开源首个基于大规模合成数据训练，支持 RAP 和哼唱的指令加强版语音合成模型 Step-Audio-TTS-3B 。
-    
+
 - **精细语音控制**: 支持多种情绪（如生气，高兴，悲伤）、方言（包括粤语、四川话等）和唱歌（包括 RAP、干声哼唱）的精准调控，满足用户对多样化语音生成的需求。
-    
+
 - **扩展工具调用**: 通过 ToolCall 机制和角色扮演增强，进一步提升其在 Agents 和复杂任务中的表现。
 
 ## 2. 模型组成
@@ -109,7 +109,7 @@ Step-Audio语音解码器主要是将包含语义和声学信息的离散标记�
 | Step-Audio-Chat   |        41.6Hz          |       265GB        |
 | Step-Audio-TTS-3B   |        41.6Hz          |       8GB        |
 
-* 需要支持CUDA的NVIDIA显卡. 
+* 需要支持CUDA的NVIDIA显卡.
   * 模型在4块显存为80GB的A800系列NVIDIA显卡上进行测试.
   * **推荐**: 为确保最佳生成质量，建议使用4块显存为80GB的A800/H800系列NVIDIA显卡.
 * 测试采用的操作系统: Linux
@@ -477,7 +477,7 @@ python app.py --model-path where_you_download_dir
     </tbody>
 </table>
 
-*注意：带有“*”标记的内容仅供参考。 
+*注意：带有“*”标记的内容仅供参考。
 
 #### 雷达图(人工测评)
 <img src="./assets/stepeval_radar_chart.png" width="600" alt="QR code">
@@ -574,8 +574,8 @@ Step-Audio 的在线版本可以通过[跃问](https://yuewen.cn) 的应用程�
 ### 音频克隆
 | role   | prompt wav | clone wav |
 |:-------:|:-------:|:-------:|
-|赵本山| [google drive](https://drive.google.com/file/d/1AzAvVx5F7Frl1XPieEIdYhzbd3EcWess/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_zhaobenshan.mp3)|[google drive](https://drive.google.com/file/d/108fYHj2ghK_BQyWsZJ35ctyuAv0JzHIu/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_zhaobenshan.mp3)| 
-|李雪琴| [google drive](https://drive.google.com/file/d/15SkZ29hksELYi1NDOxYOPu-kRTLSyke_/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_lixueqin.wav)|[google drive](https://drive.google.com/file/d/11Le4qMqL2DmWpf7RFRpKUXERIR9TtKC0/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_lixueqin.mp3)| 
+|赵本山| [google drive](https://drive.google.com/file/d/1AzAvVx5F7Frl1XPieEIdYhzbd3EcWess/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_zhaobenshan.mp3)|[google drive](https://drive.google.com/file/d/108fYHj2ghK_BQyWsZJ35ctyuAv0JzHIu/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_zhaobenshan.mp3)|
+|李雪琴| [google drive](https://drive.google.com/file/d/15SkZ29hksELYi1NDOxYOPu-kRTLSyke_/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_lixueqin.wav)|[google drive](https://drive.google.com/file/d/11Le4qMqL2DmWpf7RFRpKUXERIR9TtKC0/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_lixueqin.mp3)|
 
 ### 速度控制
 | prompt | response |
@@ -605,7 +605,7 @@ Step-Audio 的在线版本可以通过[跃问](https://yuewen.cn) 的应用程�
 ## 8. 引文
 ```
 @misc{stepaudiotechnicalreport,
-      title={Step-Audio: Harmonized Understanding and Generation in Intelligent Speech Interaction}, 
+      title={Step-Audio: Harmonized Understanding and Generation in Intelligent Speech Interaction},
       author={Step-Audio Team},
       year={2025},
 }
