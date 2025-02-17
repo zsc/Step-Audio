@@ -25,7 +25,7 @@
 ## 🔥🔥🔥 News!!
 * 2025年2月17日: 👋 发布推理代码和模型权重，其中包含[Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) 和 [Step-Audio-Tokenizer](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)。
 * 2025年2月17日: 👋 发布多轮音频交互基准测试[StepEval-Audio-360](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)。
-* 2025年2月17日：👋 发布了技术报告[Step-Audio-Report](./assets/Step-Audio.pdf)。
+* 2025年2月17日: 👋 发布了技术报告[Step-Audio-Report](./assets/Step-Audio.pdf)。
 
 ## Table of Contents
 
