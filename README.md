@@ -642,6 +642,7 @@ The online version of Step-Audio can be accessed from app version of [跃问](ht
 | prompt | response |
 |:-------:|:-------:|
 |Human: 唱一段rap|[google drive](https://drive.google.com/file/d/1F8CKmVbGZ7X7d1IkQPlmndSHeG40AXha/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/rap.wav)|
+|Human: 唱一段日语的歌曲|[google drive](https://drive.google.com/file/d/1kS2jQEq70ynh46pG_P5Xp1_NY3C-cJ-U/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/multilingual_singing.wav)|
 
 ## 8. Acknowledgements
 
