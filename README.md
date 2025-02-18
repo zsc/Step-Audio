@@ -549,7 +549,7 @@ We release [**StepEval-Audio-360**](https://huggingface.co/datasets/stepfun-ai/S
 
 *TriviaQA dataset marked with "\*" indicates results are for reference only.*
 
-#### 5.3.3 Audio instruction following 
+#### 5.3.3 Audio instruction following
 <table>
     <thead>
         <tr>
@@ -635,13 +635,14 @@ The online version of Step-Audio can be accessed from app version of [跃问](ht
 ## 8. Acknowledgements
 
 Part of the code for this project comes from:
-* [CosyVoice](GitHub - FunAudioLLM/CosyVoice: Multi-lingual large voice generation model, providing inference, tra)
-* [transformers](GitHub - huggingface/transformers: 🤗 Transformers: State-of-the-art Machine Learning for Pytorch, Te)
-* [FunASR](GitHub - modelscope/FunASR: A Fundamental End-to-End Speech Recognition Toolkit and Open Source SOTA)
+* [CosyVoice](https://github.com/FunAudioLLM/CosyVoice)
+* [transformers](https://github.com/huggingface/transformers)
+* [FunASR](https://github.com/modelscope/FunASR)
 
+Thank you to all the open-source projects for their contributions to this project!
 ## 9. License Agreement
 
-+ The use of weights for Step Audio related models requires following license in [1](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main). [2](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer/tree/main)[3](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B/tree/main)
++ The use of weights for Step Audio related models requires following license in [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main), [Step-Audio-Tokenizer](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer/tree/main) and [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B/tree/main)
 
 + The code in this open-source repository is licensed under the [Apache 2.0](LICENSE) License.
 
