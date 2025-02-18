@@ -646,13 +646,14 @@ Step-Audio 的在线版本可以通过[跃问](https://yuewen.cn) 的应用程�
 ## 8. 致谢
 
 本项目的部分代码来自：
-* [CosyVoice](GitHub - FunAudioLLM/CosyVoice: Multi-lingual large voice generation model, providing inference, tra)
-* [transformers](GitHub - huggingface/transformers: 🤗 Transformers: State-of-the-art Machine Learning for Pytorch, Te)
-* [FunASR](GitHub - modelscope/FunASR: A Fundamental End-to-End Speech Recognition Toolkit and Open Source SOTA)
+* [CosyVoice](https://github.com/FunAudioLLM/CosyVoice)
+* [transformers](https://github.com/huggingface/transformers)
+* [FunASR](https://github.com/modelscope/FunASR)
 
+感谢以上所有开源项目对本项目开源做出的贡献！
 ## 9. 协议
 
-+ Step-Audio 相关模型的权重使用协议请分别需要按照[1](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main)。[2](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer/tree/main)[3](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B/tree/main)遵守
++ Step-Audio 相关模型的权重使用协议请分别需要按照[Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main)， [Step-Audio-Tokenizer](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer/tree/main) 和 [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B/tree/main) 里面的协议进行遵守
 
 + 本开源仓库的代码则遵循 [Apache 2.0](LICENSE) 协议。
 
