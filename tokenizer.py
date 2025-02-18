@@ -22,7 +22,7 @@ class StepAudioTokenizer:
             encoder_path,
             "dengcunqin/speech_paraformer-large_asr_nat-zh-cantonese-en-16k-vocab8501-online",
         )
-        kms_path = os.path.join(encoder_path, "km_iter_3000.npy")
+        kms_path = os.path.join(encoder_path, "linguistic_tokenizer.npy")
         cosy_tokenizer_path = os.path.join(encoder_path, "speech_tokenizer_v1.onnx")
         self.funasr_model = AutoModel(model=funasr_model_path, model_revision="master")
         self.kms = torch.tensor(np.load(kms_path))
