@@ -1,10 +1,14 @@
+<p align="left">
+        <a href="README_CN.md">中文</a> &nbsp｜ &nbsp English&nbsp&nbsp
+</p>
+<br><br>
+
 # Step-Audio
 <p align="center">
   <img src="assets/logo.png"  height=100>
 </p>
 <div align="center">
-  <a href="https://huggingface.co/spaces/stepfun-ai/Step-Audio"><img src="https://img.shields.io/static/v1?label=Step-Audio&message=Web&color=green"></a> &ensp;
-  <a href=""><img src="https://img.shields.io/static/v1?label=Tech Report&message=Arxiv&color=red"></a> &ensp;
+  <a href="https://arxiv.org/abs/2502.11946"><img src="https://img.shields.io/static/v1?label=Tech Report&message=Arxiv&color=red"></a> &ensp;
   <a href="https://x.com/StepFun_ai"><img src="https://img.shields.io/static/v1?label=X.com&message=Web&color=blue"></a> &ensp;
 </div>
 
@@ -18,9 +22,9 @@
 </div>
 
 ## 🔥🔥🔥 News!!
-* Feb 17, 2025: 👋 We release the inference code and model weights of [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) and [Step-Audio-Tokenizer](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360)
+* Feb 17, 2025: 👋 We release the inference code and model weights of [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat), [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) and [Step-Audio-Tokenizer](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer)
 * Feb 17, 2025: 👋 We release the multi-turn audio benchmark of [StepEval-Audio-360](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360).
-
+* Feb 17, 2025: 👋 We release the technical report of [Step-Audio](https://arxiv.org/abs/2502.11946).
 
 ## Table of Contents
 
@@ -37,13 +41,12 @@
 Step-Audio is the first production-ready open-source framework for intelligent speech interaction that harmonizes comprehension and generation, supporting multilingual conversations (e.g., Chinese, English, Japanese), emotional tones (e.g., joy/sadness), regional dialects (e.g., Cantonese/Sichuanese), adjustable speech rates, and prosodic styles (e.g., rap). Step-Audio demonstrates four key technical innovations:
 
 - **130B-Parameter Multimodal Model**: A single unified model integrating comprehension and generation capabilities, performing speech recognition, semantic understanding, dialogue, voice cloning, and speech synthesis. We have made the 130B Step-Audio-Chat variant open source.
-    
+
 - **Generative Data Engine**: Eliminates traditional TTS's reliance on manual data collection by generating high-quality audio through our 130B-parameter multimodal model. Leverages this data to train and publicly release a resource-efficient Step-Audio-TTS-3B model with enhanced instruction-following capabilities for controllable speech synthesis.
-    
+
 - **Granular Voice Control**: Enables precise regulation through instruction-based control design, supporting multiple emotions (anger, joy, sadness), dialects (Cantonese, Sichuanese, etc.), and vocal styles (rap, a cappella humming) to meet diverse speech generation needs.
-    
+
 - **Enhanced Intelligence**: Improves agent performance in complex tasks through ToolCall mechanism integration and role-playing enhancements.
-\end{itemize}
 
 ## 2. Model Summary
 In Step-Audio, audio streams are tokenized via a dual-codebook framework, combining parallel semantic (16.7Hz, 1024-entry codebook) and acoustic (25Hz, 4096-entry codebook) tokenizers with 2:3 temporal interleaving. A 130B-parameter LLM foundation (Step-1) is further enhanced via audio-contextualized continual pretraining and task-specific post-training, enabling robust cross-modal speech understanding. A hybrid speech decoder combining flow matching with neural vocoding, optimized for real-time waveform generation. A streaming-aware architecture featuring speculative response generation (40\% commit rate) and text-based context management (14:1 compression ratio) for efficient cross-modal alignment.
@@ -56,7 +59,7 @@ We implement a token-level interleaving approach to effectively integrate semant
 ### 2.2 Language Model
 
 To enhance Step-Audio’s ability to effectively process speech information and
-achieve accurate speech-text alignment, we conducted audio continual pretrain-ing based on Step-1, a 130-billion parameter pretrained text-based large language model (LLM). 
+achieve accurate speech-text alignment, we conducted audio continual pretrain-ing based on Step-1, a 130-billion parameter pretrained text-based large language model (LLM).
 
 ### 2.3 Speech Decoder
 The speech decoder in Step-Audio serves a critical function in converting discrete speech tokens, which contain both semantic and acoustic information, into continuous time-domain waveforms that represent natural speech. The decoder architecture incorporates a flow matching model and a mel-to-wave vocoder. To optimize the intelligibility and naturalness of the synthesized speech, the speech decoder is trained using a dual-code interleaving approach, ensuring seamless integration of semantic and acoustic features throughout the generation process.
@@ -75,15 +78,15 @@ In the post-training phase, we conducted task-specific Supervised Fine-Tuning (S
 | Models   | Links   |
 |-------|-------|
 | Step-Audio-Tokenizer | [🤗huggingface](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer) |
-| Step-Audio-Chat | [🤗huggingface](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) |
-| Step-Audio-TTS-3B | [🤗huggingface](https://huggingface.co/stepfun-ai/Step-Audio-Chat) |
+| Step-Audio-Chat | [🤗huggingface](https://huggingface.co/stepfun-ai/Step-Audio-Chat) |
+| Step-Audio-TTS-3B | [🤗huggingface](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B) |
 
 ### 3.2 Modelscope
 | Models   | Links   |
 |-------|-------|
 | Step-Audio-Tokenizer | [modelscope](https://modelscope.cn/models/stepfun-ai/Step-Audio-Tokenizer) |
-| Step-Audio-Chat | [modelscope](https://modelscope.cn/models/stepfun-ai/Step-Audio-TTS-3B) |
-| Step-Audio-TTS-3B | [modelscope](https://modelscope.cn/models/stepfun-ai/Step-Audio-Chat) |
+| Step-Audio-Chat | [modelscope](https://modelscope.cn/models/stepfun-ai/Step-Audio-Chat) |
+| Step-Audio-TTS-3B | [modelscope](https://modelscope.cn/models/stepfun-ai/Step-Audio-TTS-3B) |
 
 ## 4. Model Usage
 ### 📜 4.1  Requirements
@@ -95,7 +98,7 @@ The following table shows the requirements for running Step-Audio model (batch s
 | Step-Audio-Chat   |        41.6Hz          |       265GB        |
 | Step-Audio-TTS-3B   |        41.6Hz          |       8GB        |
 
-* An NVIDIA GPU with CUDA support is required. 
+* An NVIDIA GPU with CUDA support is required.
   * The model is tested on a four A800 80G GPU.
   * **Recommended**: We recommend using 4xA800/H800 GPU with 80GB memory for better generation quality.
 * Tested operating system: Linux
@@ -134,7 +137,7 @@ Inference with e2e audio/text input and audio/text output.
 ```bash
 python offline_inference.py --model-path where_you_download_dir
 ```
-#### tts inference
+#### TTS inference
 Inference tts with default speaker or clone with a new speaker
 ```bash
 python tts_inference.py --model-path where_you_download_dir --output-path where_you_save_audio_dir --synthesis-type use_tts_or_clone
@@ -154,6 +157,19 @@ Assume you have 4 GPUs available and have already downloaded all the models.
 
 ```bash
 python app.py --model-path where_you_download_dir
+```
+
+#### Inference Chat Model with vLLM (recommended)
+Step-Audio-Chat is a 130B LLM Model, it is recommended to use vLLM to inference with tensor parallelism.
+
+Currently, the official vLLM does not support the Step 1 model. You can temporarily use our [development branch](https://github.com/Oliver-ss/vllm/tree/add-step1-model) for local installation.
+
+**Because our attention mechanism is a variant of ALIBI, the official flash attention library is not compatible. We have provided a custom flash attention library in the [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main/lib) repository. Make sure export the custom flash attention library to the environment variable before running the model.**
+
+```bash
+export OPTIMUS_LIB_PATH=where_you_download_dir/Step-Audio-Chat/lib
+
+vllm serve where_you_download_dir/Step-Audio-Chat --dtype auto -tp $tp --served-model-name step_chat_audio --trust-remote-code
 ```
 
 ## 5. Benchmark
@@ -421,49 +437,50 @@ python app.py --model-path where_you_download_dir
 </table>
 
 ### 5.3 AQTA Chat
-We release [**StepEval-Audio-360**](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360) as a new benchmark, which consists of 100 multi-turn Chinese prompts sourced from real users and is designed to evaluate the quality of generated response across the following dimensions: linguistic competence, emotional intelligence, logical reasoning, creative generation, commonsense knowledge, complex instruction adherence, role-playing capabilities, gaming interactions, real-world task handling, memory retention, safety compliance, educational tutoring, and comprehensive understanding.
+We release [**StepEval-Audio-360**](https://huggingface.co/datasets/stepfun-ai/StepEval-Audio-360) as a new benchmark, which consists of 137 multi-turn Chinese prompts sourced from real users and is designed to evaluate the quality of generated response across the following dimensions: Voice Instruction Following, Voice Understanding, Logical Reasoning, Role-playing, Creativity, Sing, Language Ability, Speech Emotion Control, Gaming.
 
 #### 5.3.1 StepEval-Audio-360
 
 #### LLM judge metrics(GPT-4o)
 <table>
+    <caption>Comparison of fundamental capabilities of voice chat on the StepEval-Audio-360.</caption>
     <thead>
         <tr>
             <th>Model</th>
-            <th style="text-align:center">factuality (%) &uarr;</th>
-            <th style="text-align:center">relevance (%) &uarr;</th>
-            <th style="text-align:center">chat score &uarr;</th>
+            <th style="text-align:center">Factuality (% &uarr;)</th>
+            <th style="text-align:center">Relevance (% &uarr;)</th>
+            <th style="text-align:center">Chat Score &uarr;</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>GLM4-Voice</td>
-            <td style="text-align:center">44.0</td>
-            <td style="text-align:center">59.0</td>
-            <td style="text-align:center">3.27</td>
+            <td style="text-align:center">54.7</td>
+            <td style="text-align:center">66.4</td>
+            <td style="text-align:center">3.49</td>
         </tr>
         <tr>
             <td>Qwen2-Audio</td>
-            <td style="text-align:center">25.0</td>
-            <td style="text-align:center">28.0</td>
-            <td style="text-align:center">2.23</td>
+            <td style="text-align:center">22.6</td>
+            <td style="text-align:center">26.3</td>
+            <td style="text-align:center">2.27</td>
         </tr>
         <tr>
-            <td>Moshi*</td>
+            <td>Moshi<sup>*</sup></td>
             <td style="text-align:center">1.0</td>
             <td style="text-align:center">0</td>
             <td style="text-align:center">1.49</td>
         </tr>
         <tr>
             <td><strong>Step-Audio-Chat</strong></td>
-            <td style="text-align:center"><strong>63.0</strong></td>
-            <td style="text-align:center"><strong>73.0</strong></td>
-            <td style="text-align:center"><strong>3.91</strong></td>
+            <td style="text-align:center"><strong>66.4</strong></td>
+            <td style="text-align:center"><strong>75.2</strong></td>
+            <td style="text-align:center"><strong>4.11</strong></td>
         </tr>
     </tbody>
 </table>
 
-*Note: Moshi are marked with "\*" and should be considered for reference only. 
+* Note: Moshi are marked with "\*" and should be considered for reference only.
 
 #### Radar Chart(Human Evaluation)
 <img src="./assets/stepeval_radar_chart.png" width="600" alt="QR code">
@@ -541,57 +558,120 @@ We release [**StepEval-Audio-360**](https://huggingface.co/datasets/stepfun-ai/S
     </tbody>
 </table>
 
-*Note: Results marked with "\*" on TriviaQA dataset are considered for reference only.*
+* Note: Results marked with "\*" on TriviaQA dataset are considered for reference only.*
 
-*TriviaQA dataset marked with "\*" indicates results are for reference only.*
+#### 5.3.3 Audio instruction following
+<table>
+    <thead>
+        <tr>
+            <th rowspan="2">Category</th>
+            <th colspan="2" style="text-align:center">Instruction Following</th>
+            <th colspan="2" style="text-align:center">Audio Quality</th>
+        </tr>
+        <tr>
+            <th style="text-align:center">GLM-4-Voice</th>
+            <th style="text-align:center">Step-Audio</th>
+            <th style="text-align:center">GLM-4-Voice</th>
+            <th style="text-align:center">Step-Audio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Languages</td>
+            <td style="text-align:center">1.9</td>
+            <td style="text-align:center">3.8</td>
+            <td style="text-align:center">2.9</td>
+            <td style="text-align:center">3.3</td>
+        </tr>
+        <tr>
+            <td>Role-playing</td>
+            <td style="text-align:center">3.8</td>
+            <td style="text-align:center">4.2</td>
+            <td style="text-align:center">3.2</td>
+            <td style="text-align:center">3.6</td>
+        </tr>
+        <tr>
+            <td>Singing / RAP</td>
+            <td style="text-align:center">2.1</td>
+            <td style="text-align:center">2.4</td>
+            <td style="text-align:center">2.4</td>
+            <td style="text-align:center">4</td>
+        </tr>
+        <tr>
+            <td>Voice Control</td>
+            <td style="text-align:center">3.6</td>
+            <td style="text-align:center">4.4</td>
+            <td style="text-align:center">3.3</td>
+            <td style="text-align:center">4.1</td>
+        </tr>
+    </tbody>
+</table>
 
 ## 6. Online Engine
 The online version of Step-Audio can be accessed from app version of [跃问](https://yuewen.cn), where some impressive examples can be found as well.
 
 <img src="./assets/yuewen.jpeg" width="200" alt="QR code">
 
-At the same time, we provide a trial Hugging Face demo.
-| Models   | Links   |
-|-------|-------|
-| Step-Audio | [🤗huggingface](https://huggingface.co/spaces/stepfun-ai/Step-Audio)|
-| Step-Audio-Chat |[🤗huggingface](https://huggingface.co/spaces/stepfun-ai/step1o-audio-chat)|
-
 ## 7. Examples
 ### Clone audio
 | role   | prompt wav | clone wav |
 |:-------:|:-------:|:-------:|
-|赵本山| [audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_zhaobenshan.mp3)|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_zhaobenshan.mp3)| 
-|李雪琴| [audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_lixueqin.wav)|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_lixueqin.mp3)| 
+|于谦| [google drive](https://drive.google.com/file/d/1N9EJypafFwmeL0R152GoL_CVGbYn1_9A/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_yuqian.wav)|[google drive](https://drive.google.com/file/d/1Zs_1QrCUuoSqtUSdn2ENIor-k5baQdDV/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_yuqian.wav)|
+|李雪琴| [google drive](https://drive.google.com/file/d/15SkZ29hksELYi1NDOxYOPu-kRTLSyke_/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/prompt_wav_lixueqin.wav)|[google drive](https://drive.google.com/file/d/11Le4qMqL2DmWpf7RFRpKUXERIR9TtKC0/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/clone_wav_lixueqin.wav)|
 
 ### Speed control
 | prompt | response |
 |:-------:|:-------:|
-|human: 说一个绕口令<br>assistant: 吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮<br>human: 哎，你能把这个绕口令说的再快一点吗？|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/speed_control1.wav)|
-|human: 说一个绕口令<br>assistant: 吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮<br>human: 哎，你能把这个绕口令说的再快一点吗？<br>assistant: 吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮<br>human: 呃，你再用非常非常慢的速度说一遍的。|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/speed_control2.wav)|
+|Human: 说一个绕口令<br>Assistant: 吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮<br>Human: 哎，你能把这个绕口令说的再快一点吗？|[google drive](https://drive.google.com/file/d/1mAH-NRrOVZo4tv6gdAZkyJg8kRuTNNGC/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/speed_control1.wav)|
+|Human: 说一个绕口令<br>Assistant: 吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮<br>Human: 哎，你能把这个绕口令说的再快一点吗？<br>Assistant: 吃葡萄不吐葡萄皮，不吃葡萄倒吐葡萄皮<br>Human: 呃，你再用非常非常慢的速度说一遍的。|[google drive](https://drive.google.com/file/d/1FhRnKo8uGrtO-cWg4qkrg8iDoNRbtqSX/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/speed_control2.wav)|
 
-### High EQ(emotional control & tone control)
+### High EQ(Emotional control & Tone control)
 | prompt | response |
 |:-------:|:-------:|
-|human: 你这语气又不撒娇又不卖萌的，要不你撒个娇卖个萌吧。|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/tone_control.wav)|
-|human: 怎么办？我感觉我的人生很失败。|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/emotional_control1.wav)|
-|human: 小跃。你真的是。特别厉害。|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/emotional_control2.wav)|
+|Human: 你这语气又不撒娇又不卖萌的，要不你撒个娇卖个萌吧。|[google drive](https://drive.google.com/file/d/19IROE6_6h2UQVNniCmDTnrhxKRMOFHq3/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/tone_control.wav)|
+|Human: 怎么办？我感觉我的人生很失败。|[google drive](https://drive.google.com/file/d/1JlLbOlzmdrokVdxtwy1S8eeWqsZR2Vmc/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/emotional_control1.wav)|
+|Human: 小跃。你真的是。特别厉害。|[google drive](https://drive.google.com/file/d/19ga1RpguDP5r0Xfl1r5GY1J-kzbmHvJb/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/emotional_control2.wav)|
 
 ### Multilingual (e.g., Chinese, English, Japanese)
 | prompt | response |
 |:-------:|:-------:|
-|human: What did the speaker mean when they said, it's raining cats and dogs?|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/multilingual2.mp3)|
-|human: こんにちは。（你好）<br>assistant：こんにちは！何か手伝いましょうか？（您好！我可以帮你做点什么吗？）|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/multilingual1.wav)|
+|Human: What did the speaker mean when they said, it's raining cats and dogs?<br>Assistant: When they say "It's raining cats and dogs," it just means it's raining really hard. The speaker isn't literally saying cats and dogs are falling from the sky! It's just a fun way to describe heavy rain.|[google drive](https://drive.google.com/file/d/1LEIvdR5ANMzWX8GOTqUPTNrynNS1xx--/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/multilingual2.wav)|
+|Human: こんにちは。（你好）<br>Assistant：こんにちは！何か手伝いましょうか？（您好！我可以帮你做点什么吗？）|[google drive](https://drive.google.com/file/d/1MjKUkkzcGzVcNVXRr_Ya5y2H44K_lybH/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/multilingual1.wav)|
 
 ### Rap & Vocal
 | prompt | response |
 |:-------:|:-------:|
-|human：唱一段rap|[audio](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/rap.wav)|
+|Human: 唱一段rap|[google drive](https://drive.google.com/file/d/1F8CKmVbGZ7X7d1IkQPlmndSHeG40AXha/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/rap.wav)|
+|Human: 唱一段中文的歌曲（Sing Chinese Song）|[google drive](https://drive.google.com/file/d/1F1o-Q90llmkM-4UU6qhP8KoHp3dhaluj/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/singing.wav)|
+|Human: 唱一段日语的歌曲（Sing Japanese Song）|[google drive](https://drive.google.com/file/d/1kS2jQEq70ynh46pG_P5Xp1_NY3C-cJ-U/preview)<br>[audio file](https://github.com/stepfun-ai/Step-Audio/tree/main/examples/multilingual_singing.wav)|
 
-## 8. Citation
+## 8. Acknowledgements
+
+Part of the code for this project comes from:
+* [CosyVoice](https://github.com/FunAudioLLM/CosyVoice)
+* [transformers](https://github.com/huggingface/transformers)
+* [FunASR](https://github.com/modelscope/FunASR)
+
+Thank you to all the open-source projects for their contributions to this project!
+## 9. License Agreement
+
++ The use of weights for Step Audio related models requires following license in [Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main), [Step-Audio-Tokenizer](https://huggingface.co/stepfun-ai/Step-Audio-Tokenizer/tree/main) and [Step-Audio-TTS-3B](https://huggingface.co/stepfun-ai/Step-Audio-TTS-3B/tree/main)
+
++ The code in this open-source repository is licensed under the [Apache 2.0](LICENSE) License.
+
+## 10. Citation
 ```
-@misc{stepaudiotechnicalreport,
-      title={Step-Audio: Harmonized Understanding and Generation in Intelligent Speech Interaction}, 
-      author={Step-Audio Team},
+@misc{huang2025stepaudiounifiedunderstandinggeneration,
+      title={Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction}, 
+      author={Ailin Huang and Boyong Wu and Bruce Wang and Chao Yan and Chen Hu and Chengli Feng and Fei Tian and Feiyu Shen and Jingbei Li and Mingrui Chen and Peng Liu and Ruihang Miao and Wang You and Xi Chen and Xuerui Yang and Yechang Huang and Yuxiang Zhang and Zheng Gong and Zixin Zhang and Brian Li and Changyi Wan and Hanpeng Hu and Ranchen Ming and Song Yuan and Xuelin Zhang and Yu Zhou and Bingxin Li and Buyun Ma and Kang An and Wei Ji and Wen Li and Xuan Wen and Yuankai Ma and Yuanwei Liang and Yun Mou and Bahtiyar Ahmidi and Bin Wang and Bo Li and Changxin Miao and Chen Xu and Chengting Feng and Chenrun Wang and Dapeng Shi and Deshan Sun and Dingyuan Hu and Dula Sai and Enle Liu and Guanzhe Huang and Gulin Yan and Heng Wang and Haonan Jia and Haoyang Zhang and Jiahao Gong and Jianchang Wu and Jiahong Liu and Jianjian Sun and Jiangjie Zhen and Jie Feng and Jie Wu and Jiaoren Wu and Jie Yang and Jinguo Wang and Jingyang Zhang and Junzhe Lin and Kaixiang Li and Lei Xia and Li Zhou and Longlong Gu and Mei Chen and Menglin Wu and Ming Li and Mingxiao Li and Mingyao Liang and Na Wang and Nie Hao and Qiling Wu and Qinyuan Tan and Shaoliang Pang and Shiliang Yang and Shuli Gao and Siqi Liu and Sitong Liu and Tiancheng Cao and Tianyu Wang and Wenjin Deng and Wenqing He and Wen Sun and Xin Han and Xiaomin Deng and Xiaojia Liu and Xu Zhao and Yanan Wei and Yanbo Yu and Yang Cao and Yangguang Li and Yangzhen Ma and Yanming Xu and Yaqiang Shi and Yilei Wang and Yinmin Zhong and Yu Luo and Yuanwei Lu and Yuhe Yin and Yuting Yan and Yuxiang Yang and Zhe Xie and Zheng Ge and Zheng Sun and Zhewei Huang and Zhichao Chang and Zidong Yang and Zili Zhang and Binxing Jiao and Daxin Jiang and Heung-Yeung Shum and Jiansheng Chen and Jing Li and Shuchang Zhou and Xiangyu Zhang and Xinhao Zhang and Yibo Zhu},
       year={2025},
+      eprint={2502.11946},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.11946}, 
 }
 ```
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=stepfun-ai/Step-Audio&type=Date)](https://star-history.com/#stepfun-ai/Step-Audio&Date)
