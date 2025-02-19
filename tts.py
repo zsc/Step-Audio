@@ -78,13 +78,15 @@ class StepAudioTTS:
             }
 
         instruction_name = self.detect_instruction_name(text)
+        prompt_speaker_info = self.speakers_info[prompt_speaker]
+        
         if instruction_name in ("RAP", "哼唱"):
-            prompt_speaker_info = self.speakers_info[
-                f"{prompt_speaker}{instruction_name}"
-            ]
+            if not clone_dict:
+                prompt_speaker_info = self.speakers_info[
+                    f"{prompt_speaker}{instruction_name}"
+                ]
             cosy_model = self.music_cosy_model
         else:
-            prompt_speaker_info = self.speakers_info[prompt_speaker]
             cosy_model = self.common_cosy_model
 
         if clone_dict:
