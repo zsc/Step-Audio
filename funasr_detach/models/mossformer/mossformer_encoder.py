@@ -6,7 +6,7 @@ try:
     from rotary_embedding_torch import RotaryEmbedding
 except:
     print(
-        "If you want use mossformer, lease install rotary_embedding_torch by: \n pip install -U rotary_embedding_torch"
+        "If you want use mossformer, please install rotary_embedding_torch by: \n pip install -U rotary_embedding_torch"
     )
 from funasr_detach.models.transformer.layer_norm import (
     GlobalLayerNorm,
