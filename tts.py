@@ -199,7 +199,8 @@ class StepAudioTTS:
 
     def preprocess_prompt_wav(self, prompt_wav_path : str):
         prompt_wav, prompt_wav_sr = torchaudio.load(prompt_wav_path)
-
+        if prompt_wav.shape[0] > 1:
+            prompt_wav = prompt_wav.mean(dim=0, keepdim=True)  # 将多通道音频转换为单通道
         prompt_wav_16k = torchaudio.transforms.Resample(
             orig_freq=prompt_wav_sr, new_freq=16000
         )(prompt_wav)
