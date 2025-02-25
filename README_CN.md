@@ -141,17 +141,16 @@ where_you_download_dir
 ├── Step-Audio-TTS-3B
 ```
 
-
 <details>
 <summary>Docker 运行环境</summary>
 
 使用 `docker` 创建 `Step-Audio` 运行时所需要的环境
 
 ```bash
-# build docker
+# 构建 docker 镜像
 docker build . -t step-audio
 
-# run docker:
+# 运行 docker
 docker run --rm -ti --gpus all \
     -v /your/code/path:/app -v /your/model/path:/model \
     -p 7860:7860 \

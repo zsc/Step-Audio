@@ -132,7 +132,7 @@ where_you_download_dir
 ```
 
 <details>
-<summary>Run with Docker(click to expand)</summary>
+<summary>Run with Docker</summary>
 
 You can set up the environment required for running Step-Audio using the provided Dockerfile.
 
@@ -140,7 +140,7 @@ You can set up the environment required for running Step-Audio using the provide
 # build docker
 docker build . -t step-audio
 
-# run docker:
+# run docker
 docker run --rm -ti --gpus all \
     -v /your/code/path:/app -v /your/model/path:/model \
     -p 7860:7860 \
