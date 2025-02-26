@@ -130,8 +130,7 @@ where_you_download_dir
 ├── Step-Audio-TTS-3B
 ```
 
-<details>
-<summary>Docker 実行環境</summary>
+#### Docker 実行環境
 
 dockerを使用してStep-Audioの実行に必要な環境を作成します
 
@@ -145,9 +144,19 @@ docker run --rm -ti --gpus all \
     -p 7860:7860 \
     step-audio \
     -- bash
+
+# vLLM Dockerイメージのビルド
+docker build -f Dockerfile-vllm -t step-audio-vllm .
+
+# vLLM Dockerコンテナの実行
+docker run --rm -ti --gpus all \
+    -v /your/code/path:/app -v /your/model/path:/model \
+    -p 7860:7860 \
+    -p 8000:8000 \
+    step-audio-vllm \
+    -- bash
 ```
 
-</details>
 
 ###  🚀 4.3 推論スクリプト
 #### オフライン推論
@@ -180,6 +189,23 @@ python app.py --model-path where_you_download_dir
 # Step-Audio-TTS-3B デモ
 python tts_app.py --model-path where_you_download_dir
 
+```
+
+#### vLLMを用いた対話モデル推論（推奨）
+Step-Audio-Chatは130Bパラメータの大規模言語モデルであり、テンソル並列処理をサポートするvLLMを使用した推論を推奨します。
+    * vLLMはTokenizerおよびTTSをロードしないため、音声入力による推論には対応していません
+
+現在の公式vLLMはStep 1モデルアーキテクチャに対応していないため、当社の[開発ブランチ](https://github.com/stepfun-ai/vllm/tree/add-step1-model)を使用したローカルインストールを推奨します。
+
+本モデルのAttentionメカニズムはALIBIの変種実装を採用しているため、公式flash attentionライブラリとの互換性がありません。[Step-Audio-Chat](https://huggingface.co/stepfun-ai/Step-Audio-Chat/tree/main/lib)リポジトリにカスタム版flash attentionライブラリを提供しています。モデル実行前に必ず環境変数へカスタムライブラリのパスを追加してください。
+
+```bash
+export OPTIMUS_LIB_PATH=where_you_download_dir/Step-Audio-Chat/lib
+
+vllm serve where_you_download_dir/Step-Audio-Chat --dtype auto -tp $tp --served-model-name step-audio-chat --trust-remote-code
+
+# vLLMチャットの呼び出し例
+python call_vllm_chat.py
 ```
 
 ## 5. ベンチマーク
