@@ -178,7 +178,11 @@ Start a local server for online inference.
 Assume you have 4 GPUs available and have already downloaded all the models.
 
 ```bash
+# Step-Audio-Chat demo
 python app.py --model-path where_you_download_dir
+
+# Step-Audio-TTS-3B demo
+python tts_app.py --model-path where_you_download_dir
 ```
 
 #### Inference Chat Model with vLLM (recommended)

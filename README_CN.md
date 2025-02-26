@@ -188,8 +188,13 @@ python tts_inference.py --model-path where_you_download_dir --output-path where_
 假设您已配备4块GPU且已完成所有模型的下载。
 
 ```bash
+# Step-Audio-Chat demo
 python app.py --model-path where_you_download_dir
+
+# Step-Audio-TTS-3B demo
+python tts_app.py --model-path where_you_download_dir
 ```
+
 
 ## 5. 基准
 
